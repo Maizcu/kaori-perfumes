@@ -141,6 +141,13 @@
                 >
                   {{- 'products.product.on_sale' | t -}}
                 </span>
+              {%- elsif card_product.tags contains 'nuevo' -%}
+                <span
+                  id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
+                  class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+                >
+                  {{- 'products.product.new' | t -}}
+                </span>
               {%- endif -%}
             </div>
           </div>
@@ -205,7 +212,11 @@
                   </span>
                 </p>
               {%- endif -%}
-
+              
+              {%- assign family = card_product.metafields.custom.familia.value -%}
+              {%- if family -%}
+                <span class="card__family">{{ family.nombre | escape }}</span>
+              {%- endif -%}
               {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
               {%- if card_product.quantity_price_breaks_configured? -%}
                 {% if card_product.variants_count == 1 and quick_add == 'bulk' %}
@@ -548,6 +559,7 @@
                   </div>
                 </modal-dialog>
               </div>
+              
             {% endif %}
           {% endif %}
           <div class="card__badge {{ settings.badge_position }}">
@@ -565,6 +577,13 @@
               >
                 {{- 'products.product.on_sale' | t -}}
               </span>
+            {%- elsif card_product.tags contains 'nuevo' -%}
+            <span
+              id="Badge-{{ section_id }}-{{ card_product.id }}"
+              class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
+            >
+              {{- 'products.product.new' | t -}}
+            </span>
             {%- endif -%}
           </div>
         </div>

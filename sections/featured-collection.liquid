@@ -78,6 +78,12 @@
           {{ section.settings.title }}
         </h2>
       {%- endif -%}
+      {%- if section.settings.link_label != blank -%}
+        <a href="{{ section.settings.collection.url }}" class="text-link">
+          {{- section.settings.link_label | escape -}}
+          {{ 'icon-arrow.svg' | inline_asset_content }}
+        </a>
+      {%- endif -%}
       {%- if section.settings.description != blank
         or section.settings.show_description
         and section.settings.collection.description != empty
@@ -247,6 +253,11 @@
       "id": "title",
       "default": "t:sections.featured-collection.settings.title.default",
       "label": "t:sections.featured-collection.settings.title.label"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Enlace junto al título"
     },
     {
       "type": "select",

@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "password_page": {
@@ -125,7 +134,7 @@
         "in_cart_aria_label": "Cantidad ({{ quantity }} en el carrito)"
       },
       "price": {
-        "from_price_html": "A partir de {{ price }}",
+        "from_price_html": "desde {{ price }}",
         "regular_price": "Precio habitual",
         "sale_price": "Precio de oferta",
         "unit_price": "Precio unitario"
@@ -180,7 +189,8 @@
       "product_variants": "Variantes de producto",
       "taxes_included": "Impuestos incluidos.",
       "duties_included": "Aranceles incluidos.",
-      "duties_and_taxes_included": "Aranceles e impuestos incluidos."
+      "duties_and_taxes_included": "Aranceles e impuestos incluidos.",
+      "new": "Nuevo"
     },
     "modal": {
       "label": "Galería multimedia"
@@ -276,6 +286,15 @@
     }
   },
   "sections": {
+    "scent_explorer": {
+      "top_notes": "Salida",
+      "heart_notes": "Corazón",
+      "base_notes": "Fondo",
+      "discover": "Descubrir {{ product }}",
+      "price_from_html": "desde {{ price }}",
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
     "header": {
       "announcement": "Anuncio",
       "menu": "Menú",

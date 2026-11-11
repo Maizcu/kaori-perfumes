@@ -95,6 +95,9 @@
             >
               {{- link.title | escape -}}
             </span>
+            {%- if link.url == section.settings.menu_badge_link and section.settings.menu_badge_text != blank -%}
+              <small class="menu-badge">{{ section.settings.menu_badge_text | escape }}</small>
+            {%- endif -%}
           </a>
         {%- endif -%}
       </li>

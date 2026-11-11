@@ -1,0 +1,96 @@
+.ritual-promo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 160rem;
+  margin: 0 auto;
+  padding: clamp(4.8rem, 6vw, 8rem) 2.4rem 0;
+}
+
+.ritual-promo__media {
+  position: relative;
+  flex: 1 1 60rem;
+  min-width: 0;
+  min-height: 42rem;
+  overflow: hidden;
+  border-radius: 2rem;
+}
+
+.ritual-promo__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ritual-promo__box {
+  flex: 0 1 47rem;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  padding: clamp(3.2rem, 4vw, 5.2rem);
+  border-radius: 2rem;
+}
+
+.ritual-promo__title {
+  margin: 0;
+  font-size: clamp(4.8rem, 5vw, 7.6rem);
+  line-height: 0.92;
+}
+
+.ritual-promo__text p {
+  margin: 0;
+}
+
+.ritual-promo__steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(var(--color-foreground), 0.25);
+  counter-reset: step;
+}
+
+.ritual-promo__steps li {
+  display: flex;
+  align-items: baseline;
+  gap: 1.8rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.25);
+  counter-increment: step;
+}
+
+.ritual-promo__steps li::before {
+  content: counter(step);
+  width: 2rem;
+  font-family: var(--font-heading-family);
+  font-style: italic;
+  font-size: 2.4rem;
+}
+
+.ritual-promo__price {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.ritual-promo__price s {
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.ritual-promo .pill {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+@media screen and (max-width: 749px) {
+  .ritual-promo {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+
+  .ritual-promo__media {
+    min-height: 0;
+    aspect-ratio: 3 / 2;
+  }
+}

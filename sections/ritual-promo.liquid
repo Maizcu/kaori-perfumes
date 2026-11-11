@@ -1,0 +1,151 @@
+{{ 'section-ritual-promo.css' | asset_url | stylesheet_tag }}
+
+<div class="ritual-promo">
+  <div class="ritual-promo__media">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 1800
+        | image_tag:
+          loading: 'lazy',
+          widths: '600, 900, 1200, 1800',
+          sizes: '(min-width: 990px) 65vw, 100vw'
+      }}
+    {%- endif -%}
+  </div>
+
+  <div class="ritual-promo__box color-{{ section.settings.color_scheme }}">
+    {%- if section.settings.label != blank -%}
+      <p class="eyebrow">{{ section.settings.label | escape }}</p>
+    {%- endif -%}
+
+    <h2 class="ritual-promo__title">{{ section.settings.title }}</h2>
+
+    {%- if section.settings.text != blank -%}
+      <div class="ritual-promo__text">{{ section.settings.text }}</div>
+    {%- endif -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <ol class="ritual-promo__steps">
+        {%- for block in section.blocks -%}
+          <li {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</li>
+        {%- endfor -%}
+      </ol>
+    {%- endif -%}
+
+    {%- if section.settings.price != blank -%}
+      <p class="ritual-promo__price">
+        {{ section.settings.price }}
+        {%- if section.settings.compare_price != blank %}
+          <s>{{ section.settings.compare_price | escape }}</s>
+        {%- endif %}
+      </p>
+    {%- endif -%}
+
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link }}" class="pill">
+        {{- section.settings.button_label | escape -}}
+        <span class="pill__icon" aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+      </a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Crea tu ritual",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de color",
+      "default": "scheme-4"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Antetítulo",
+      "default": "Pack a tu medida"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Título",
+      "default": "Crea tu <em>ritual</em>"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texto",
+      "default": "<p>Elige dos perfumes y una vela. Te los enviamos juntos, en una sola caja, con un 15 % de descuento.</p>"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "price",
+      "label": "Precio",
+      "default": "Desde <strong>142,80 €</strong>"
+    },
+    {
+      "type": "text",
+      "id": "compare_price",
+      "label": "Precio sin descuento",
+      "default": "168,00 €"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Botón",
+      "default": "Crear mi ritual"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Enlace del botón"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Paso",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texto"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [
+    {
+      "name": "Crea tu ritual",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "text": "Elige dos perfumes"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "text": "Añade una vela"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "text": "Ahorra un 15 %"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

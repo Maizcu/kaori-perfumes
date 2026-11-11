@@ -292,6 +292,7 @@
           <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
         {% endif %}
         <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+        <span class="cart-label" aria-hidden="true">{{ 'templates.cart.cart' | t }}</span>
         {%- if cart != empty -%}
           <div class="cart-count-bubble">
             {%- if cart.item_count < 100 -%}
@@ -538,6 +539,17 @@
       ],
       "default": "dropdown",
       "label": "t:sections.header.settings.menu_type_desktop.label"
+    },
+    {
+      "type": "url",
+      "id": "menu_badge_link",
+      "label": "Enlace con etiqueta"
+    },
+    {
+      "type": "text",
+      "id": "menu_badge_text",
+      "label": "Etiqueta",
+      "default": "-15 %"
     },
     {
       "type": "select",

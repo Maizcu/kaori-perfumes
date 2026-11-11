@@ -1,61 +1,110 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "hero_Jpt7mF": {
+      "type": "hero",
+      "name": "Hero",
+      "settings": {
+        "image": "shopify://shop_images/banner-hero-ancho.jpg",
+        "image_mobile": "shopify://shop_images/perfumes-trio.jpg",
+        "title": "Aromas que <em>se quedan.</em>",
+        "label": "Eau de parfum & velas",
+        "text": "Cinco perfumes y tres velas que nacen de un ingrediente que reconoces.",
+        "button_label": "Descubrir perfumes",
+        "button_link": "shopify://collections/perfumes",
+        "button_label_2": "Crear mi ritual",
+        "button_link_2": "shopify://pages/crea-tu-ritual"
+      }
+    },
+    "scent_explorer_4GQGrP": {
+      "type": "scent-explorer",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "scent_NbEdPp": {
+          "type": "scent",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "product": "granada",
+            "short_name": "",
+            "icon": "{{ block.settings.product.metafields.custom.ingrediente.value.imagen.value }}"
           }
         },
-        "button": {
-          "type": "buttons",
+        "scent_ek9nhq": {
+          "type": "scent",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "product": "cereza-negra",
+            "short_name": "Cereza",
+            "icon": "{{ block.settings.product.metafields.custom.ingrediente.value.imagen.value }}"
+          }
+        },
+        "scent_hHMqcw": {
+          "type": "scent",
+          "settings": {
+            "product": "coco",
+            "short_name": "",
+            "icon": "{{ block.settings.product.metafields.custom.ingrediente.value.imagen.value }}"
+          }
+        },
+        "scent_TGjNw3": {
+          "type": "scent",
+          "settings": {
+            "product": "ambar",
+            "short_name": "",
+            "icon": "{{ block.settings.product.metafields.custom.ingrediente.value.imagen.value }}"
+          }
+        },
+        "scent_WybeVd": {
+          "type": "scent",
+          "settings": {
+            "product": "sandalo",
+            "short_name": "",
+            "icon": "{{ block.settings.product.metafields.custom.ingrediente.value.imagen.value }}"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "scent_NbEdPp",
+        "scent_ek9nhq",
+        "scent_hHMqcw",
+        "scent_TGjNw3",
+        "scent_WybeVd"
       ],
+      "name": "Descubre tu aroma",
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "label": "Descubre tu aroma",
+        "title": "¿A qué te apetece <em>oler hoy?</em>",
+        "delay": 5
       }
     },
     "featured_collection": {
       "type": "featured-collection",
+      "custom_css": [
+        ".title {font-size: clamp(5.2rem, 6.2vw, 9.6rem); line-height: 0.92;}",
+        ".grid__item:nth-child(even) {margin-top: 7.2rem;}",
+        "@media screen and (max-width: 749px) {.grid__item:nth-child(even) {margin-top: 0; }}",
+        ".collection__title {display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 2.4rem;}"
+      ],
       "settings": {
-        "title": "Featured products",
+        "collection": "perfumes",
+        "products_to_show": 5,
+        "title": "La <em>colección</em>",
+        "link_label": "ver todos los perfumes",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "columns_desktop": 5,
+        "enable_desktop_slider": false,
         "full_width": false,
         "show_view_all": true,
         "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
+        "color_scheme": "scheme-1",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -63,13 +112,84 @@
         "show_rating": false,
         "quick_add": "none",
         "columns_mobile": "2",
+        "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
+      }
+    },
+    "ritual_promo_98zfdU": {
+      "type": "ritual-promo",
+      "blocks": {
+        "step_w9mHJD": {
+          "type": "step",
+          "settings": {
+            "text": "Elige dos perfumes"
+          }
+        },
+        "step_7q4d9x": {
+          "type": "step",
+          "settings": {
+            "text": "Añade una vela"
+          }
+        },
+        "step_XUxCh8": {
+          "type": "step",
+          "settings": {
+            "text": "Ahorra un 15 %"
+          }
+        }
+      },
+      "block_order": [
+        "step_w9mHJD",
+        "step_7q4d9x",
+        "step_XUxCh8"
+      ],
+      "name": "Crea tu ritual",
+      "settings": {
+        "image": "shopify://shop_images/banner-granada-sandalo.jpg",
+        "color_scheme": "",
+        "label": "Pack a tu medida",
+        "title": "Crea tu <em>ritual</em>",
+        "text": "<p>Elige dos perfumes y una vela. Te los enviamos juntos, en una sola caja, con un 15 % de descuento.</p>",
+        "price": "Desde <strong>142,80 €</strong>",
+        "compare_price": "168,00 €",
+        "button_label": "Crear mi ritual",
+        "button_link": "shopify://pages/crea-tu-ritual"
+      }
+    },
+    "featured_candles_XPmLEC": {
+      "type": "featured-candles",
+      "name": "Velas destacadas",
+      "settings": {
+        "label": "Las velas",
+        "title": "Para encender <em>el momento</em>",
+        "text": "Formas escultóricas y cera en colores suaves. Encendidas o apagadas, también decoran.",
+        "collection": "velas",
+        "link_label": "Ver todas las velas",
+        "image": "shopify://shop_images/velas-trio-roca.jpg"
+      }
+    },
+    "story_teaser_TgFcP7": {
+      "type": "story-teaser",
+      "name": "Nuestra historia",
+      "settings": {
+        "image_left": "shopify://shop_images/historia-granado.jpg",
+        "image_right": "shopify://shop_images/historia-piedras-cerezo.jpg",
+        "stamp": "香",
+        "label": "Nuestra historia · La leyenda de Kaori",
+        "title": "Un aroma puede <em>devolverte a un lugar.</em>",
+        "text": "Cuentan que una vieja perfumista guardaba en su jardín cinco tesoros: una granada, un cerezo que florecía de noche, un coco traído por el mar, una lágrima de ámbar y un viejo sándalo. De ellos nacen nuestros cinco perfumes.",
+        "link_label": "Leer la leyenda",
+        "link": "shopify://pages/nuestra-historia"
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "hero_Jpt7mF",
+    "scent_explorer_4GQGrP",
+    "featured_collection",
+    "ritual_promo_98zfdU",
+    "featured_candles_XPmLEC",
+    "story_teaser_TgFcP7"
   ]
 }

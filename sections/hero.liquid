@@ -1,0 +1,115 @@
+{{ 'section-hero.css' | asset_url | stylesheet_tag }}
+
+<div class="hero">
+  {%- if section.settings.image != blank -%}
+    <picture>
+      {%- if section.settings.image_mobile != blank -%}
+        <source
+          media="(max-width: 749px)"
+          srcset="{{ section.settings.image_mobile | image_url: width: 1000 }}"
+        >
+      {%- endif -%}
+      {{
+        section.settings.image
+        | image_url: width: 3000
+        | image_tag:
+          class: 'hero__image',
+          widths: '800, 1200, 1600, 2000, 3000',
+          sizes: '100vw',
+          loading: 'eager',
+          fetchpriority: 'high'
+      }}
+    </picture>
+  {%- endif -%}
+
+  <h2 class="hero__title">{{ section.settings.title }}</h2>
+
+  <div class="hero__aside">
+    {%- if section.settings.label != blank -%}
+      <p class="hero__label">{{ section.settings.label | escape }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.text != blank -%}
+      <p class="hero__text">{{ section.settings.text | escape }}</p>
+    {%- endif -%}
+
+    <div class="hero__buttons">
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link }}" class="pill">
+          {{- section.settings.button_label | escape -}}
+          <span class="pill__icon" aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+        </a>
+      {%- endif -%}
+
+      {%- if section.settings.button_label_2 != blank -%}
+        <a href="{{ section.settings.button_link_2 }}" class="pill pill--lime">
+          {{- section.settings.button_label_2 | escape -}}
+          <span class="pill__icon" aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Imagen"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Imagen en móvil"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Título",
+      "default": "Aromas que <em>se quedan.</em>"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Antetítulo",
+      "default": "Eau de parfum & velas"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Texto",
+      "default": "Cinco perfumes y tres velas que nacen de un ingrediente que reconoces."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Botón principal",
+      "default": "Descubrir perfumes"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Enlace del botón principal"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Botón secundario",
+      "default": "Crear mi ritual"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Enlace del botón secundario"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

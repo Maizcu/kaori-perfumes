@@ -1,0 +1,202 @@
+{{ 'section-scent-explorer.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'scent-explorer.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign first_color = section.blocks.first.settings.product.metafields.custom.color.value | default: '#ddd8d1'
+  assign first_brightness = first_color | color_brightness
+-%}
+
+<scent-explorer
+  class="explorer{% if first_brightness < 128 %} is-dark{% endif %}"
+  style="--explorer-bg: {{ first_color }}; --explorer-delay: {{ section.settings.delay }}s;"
+>
+  <div class="page-width">
+    <div class="explorer__head">
+      <div>
+        <p class="eyebrow">{{ section.settings.label | escape }}</p>
+        <h2 class="explorer__title">{{ section.settings.title }}</h2>
+      </div>
+
+      <div class="explorer__tabs" role="tablist" aria-label="{{ section.settings.label | escape }}">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign product = block.settings.product
+            assign color = product.metafields.custom.color.value | default: '#ddd8d1'
+            assign brightness = color | color_brightness
+          -%}
+          <button
+            type="button"
+            class="explorer__tab"
+            role="tab"
+            id="ExplorerTab-{{ block.id }}"
+            aria-controls="ExplorerPanel-{{ block.id }}"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+            tabindex="{% if forloop.first %}0{% else %}-1{% endif %}"
+            data-color="{{ color }}"
+            data-dark="{% if brightness < 128 %}true{% else %}false{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            {%- if block.settings.icon != blank -%}
+              {{ block.settings.icon | image_url: width: 200 | image_tag: class: 'explorer__icon', alt: '' }}
+            {%- endif -%}
+            <span class="explorer__tab-name">{{ block.settings.short_name | default: product.title | escape }}</span>
+            <span class="explorer__progress"></span>
+          </button>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- for block in section.blocks -%}
+      {%- liquid
+        assign product = block.settings.product
+        assign family = product.metafields.custom.familia.value
+        assign mood = product.media[4] | default: product.media[1]
+        assign price = product.price_min | money_without_trailing_zeros
+      -%}
+      <div
+        class="explorer__panel"
+        role="tabpanel"
+        id="ExplorerPanel-{{ block.id }}"
+        aria-labelledby="ExplorerTab-{{ block.id }}"
+        {% unless forloop.first %}hidden{% endunless %}
+      >
+        <div class="explorer__info">
+          <div class="explorer__nav">
+            <p class="eyebrow explorer__count">
+              {{- forloop.index | prepend: '0' | slice: -2, 2 }} / {{ forloop.length | prepend: '0' | slice: -2, 2 -}}
+            </p>
+            <button type="button" class="explorer__arrow" data-step="-1" aria-label="{{ 'sections.scent_explorer.previous' | t }}">
+              {{- 'icon-arrow.svg' | inline_asset_content -}}
+            </button>
+            <button type="button" class="explorer__arrow" data-step="1" aria-label="{{ 'sections.scent_explorer.next' | t }}">
+              {{- 'icon-arrow.svg' | inline_asset_content -}}
+            </button>
+          </div>
+
+          <h3 class="explorer__name">{{ product.title | escape }}</h3>
+
+          {%- if family -%}
+            <p class="eyebrow">{{ family.nombre | escape }}</p>
+          {%- endif -%}
+
+          {%- if product.metafields.custom.frase != blank -%}
+            <p class="explorer__phrase">{{ product.metafields.custom.frase | escape }}</p>
+          {%- endif -%}
+
+          <dl class="explorer__notes">
+            <div>
+              <dt class="eyebrow">{{ 'sections.scent_explorer.top_notes' | t }}</dt>
+              <dd>{{ product.metafields.custom.notas_salida | escape }}</dd>
+            </div>
+            <div>
+              <dt class="eyebrow">{{ 'sections.scent_explorer.heart_notes' | t }}</dt>
+              <dd>{{ product.metafields.custom.notas_corazon | escape }}</dd>
+            </div>
+            <div>
+              <dt class="eyebrow">{{ 'sections.scent_explorer.base_notes' | t }}</dt>
+              <dd>{{ product.metafields.custom.notas_fondo | escape }}</dd>
+            </div>
+          </dl>
+
+          <div class="explorer__buy">
+            <a href="{{ product.url }}" class="pill">
+              {{- 'sections.scent_explorer.discover' | t: product: product.title -}}
+              <span class="pill__icon" aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+            </a>
+            <span>
+              {%- if product.price_varies -%}
+                {{ 'sections.scent_explorer.price_from_html' | t: price: price }}
+              {%- else -%}
+                {{ price }}
+              {%- endif -%}
+            </span>
+          </div>
+        </div>
+
+        <div class="explorer__media">
+          {%- if mood -%}
+            {{
+              mood
+              | image_url: width: 1200
+              | image_tag:
+                class: 'explorer__mood',
+                loading: 'lazy',
+                widths: '600, 900, 1200',
+                sizes: '(min-width: 990px) 40vw, 70vw'
+            }}
+          {%- endif -%}
+          {%- if product.featured_image -%}
+            {{
+              product.featured_image
+              | image_url: width: 800
+              | image_tag:
+                class: 'explorer__studio',
+                loading: 'lazy',
+                widths: '400, 600, 800',
+                sizes: '(min-width: 990px) 22vw, 40vw'
+            }}
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</scent-explorer>
+
+{% schema %}
+{
+  "name": "Descubre tu aroma",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Antetítulo",
+      "default": "Descubre tu aroma"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Título",
+      "default": "¿A qué te apetece <em>oler hoy?</em>"
+    },
+    {
+      "type": "range",
+      "id": "delay",
+      "label": "Cambio automático",
+      "min": 4,
+      "max": 10,
+      "step": 1,
+      "unit": "s",
+      "default": 6
+    }
+  ],
+  "blocks": [
+    {
+      "type": "scent",
+      "name": "Perfume",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Producto"
+        },
+        {
+          "type": "text",
+          "id": "short_name",
+          "label": "Nombre corto"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icono"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Descubre tu aroma"
+    }
+  ]
+}
+{% endschema %}
