@@ -3,7 +3,7 @@
 Tienda de perfumes y velas de inspiración japonesa, desarrollada para la prueba técnica de Shopify Developer.
 
 - **Tienda:** https://kaori-perfumes-xuau8ztt.myshopify.com (la contraseña va en el correo de entrega)
-- **App del descuento:** [kaori-ritual](URL_DEL_REPO_DE_LA_APP), con la Shopify Function que aplica el descuento del ritual
+- **App del descuento:** [kaori-ritual](https://github.com/Maizcu/kaori-app), con la Shopify Function que aplica el descuento del ritual
 - **Diseño:** presentación adjunta en la entrega
 
 ## Punto de partida
@@ -25,7 +25,7 @@ Los productos usan metafields y metaobjects (ver [Datos de producto](#datos-de-p
 | Requisito | Dónde está |
 | --- | --- |
 | Home con secciones propias, settings y blocks | `templates/index.json`: Hero, Descubre tu aroma (un bloque por perfume), Promo del ritual (un bloque por paso), Velas destacadas y Nuestra historia son secciones propias. La colección destacada es la de Dawn. |
-| Página de colección | `templates/collection.json` con 6 productos de ejemplo. Banner con la última palabra del título en cursiva, tarjeta promocional del ritual dentro de la cuadrícula y tarjetas con familia olfativa, formato y badges. Filtros y orden de Dawn. |
+| Página de colección | `templates/collection.json` con 8 productos de ejemplo (5 perfumes y 3 velas). Banner con la última palabra del título en cursiva, tarjeta promocional del ritual dentro de la cuadrícula y tarjetas con familia olfativa, formato y badges. Filtros y orden de Dawn. |
 | Ficha de producto con datos enriquecidos | `main-product` con bloques propios: pirámide olfativa con intensidad, duración y momento de uso, nombre en japonés, frase y botón al ritual. Debajo, la sección "Combina con". Las velas usan una plantilla alternativa (`product.vela.json`). |
 | Funcionalidad personalizada | Selector de packs "Crea tu ritual" con descuento por Shopify Function. Como extras: barra de envío gratis progresiva, cross-selling en el carrito y badges dinámicos. |
 | JavaScript y DOM | `assets/ritual.js` (`<ritual-form>` y `<ritual-builder>`) y `assets/scent-explorer.js` (`<scent-explorer>`). |
@@ -68,6 +68,18 @@ El cliente elige 2 perfumes y 1 vela y se lleva un 15 % de descuento en esas tre
   - escucha `shopify:block:select` para que, al seleccionar un perfume en el editor, la pestaña se abra y se pare.
 - **Nuestra historia:** `legend-hero`, `legend-chapter`, `legend-promise`, `legend-principles` y `legend-cta`. Los capítulos pueden listar los ingredientes (metaobject) de una colección.
 - **Etiqueta "-15 %"** en el enlace del menú que lleva al ritual, configurable desde la cabecera.
+
+## Configuración de la tienda
+
+Además del código, la tienda está configurada desde el admin:
+
+- **Catálogo:** 8 productos de ejemplo importados por CSV con sus imágenes y metafields: 5 perfumes (tipo `Eau de parfum`, con variantes de 50 y 100 ml) y 3 velas (tipo `Vela`). Las relaciones de "Combina con" se cargaron en un segundo CSV.
+- **Metafields y metaobjects:** las definiciones de los metafields de producto (tabla siguiente) y de los metaobjects Familia olfativa e Ingrediente, con sus entradas.
+- **Colecciones:** Perfumes y Velas.
+- **Páginas:** "Crea tu ritual" y "Nuestra historia", con sus plantillas (`page.ritual` y `page.historia`). Las velas usan la plantilla `product.vela`.
+- **Menús:** el principal y los del pie, con el enlace al ritual.
+- **Ajustes del tema:** esquemas de color, tipografías, logo y favicon, producto sugerido del carrito y umbral de envío gratis.
+- **Descuento automático:** "Ritual Kaori", dado de alta con la mutation de la app.
 
 ## Datos de producto
 
