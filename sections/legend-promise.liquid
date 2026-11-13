@@ -1,0 +1,69 @@
+{{ 'section-legend-promise.css' | asset_url | stylesheet_tag }}
+
+<div class="promise color-{{ section.settings.color_scheme }}">
+  {% render 'enso', class: 'promise__enso' %}
+
+  <div class="promise__inner page-width">
+    <p class="promise__jp promise__muted" lang="ja" aria-hidden="true">{{ section.settings.japanese | escape }}</p>
+    <h2 class="eyebrow promise__muted">{{ section.settings.label | escape }}</h2>
+    <p class="promise__text promise__muted">{{ section.settings.intro | escape }}</p>
+    <blockquote class="promise__quote">{{ section.settings.quote }}</blockquote>
+    <span class="stamp" lang="ja" aria-hidden="true">{{ section.settings.stamp | escape }}</span>
+    <div class="promise__text promise__muted">{{ section.settings.text }}</div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Promesa",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de color",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "japanese",
+      "label": "Texto en japonés",
+      "default": "第三章　約束"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Antetítulo",
+      "default": "Capítulo tres · La promesa"
+    },
+    {
+      "type": "text",
+      "id": "intro",
+      "label": "Introducción",
+      "default": "Antes de marcharse, dejó escrita una sola frase en la puerta del jardín:"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "quote",
+      "label": "Cita",
+      "default": "«Quien lleve uno de estos aromas <em>nunca olvidará el lugar donde fue feliz.</em>»"
+    },
+    {
+      "type": "text",
+      "id": "stamp",
+      "label": "Sello",
+      "default": "香"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texto final",
+      "default": "<p>Kaori nace en Madrid para guardar esa promesa en un frasco. En japonés, <em>kaori</em> significa aroma; para nosotros, también significa volver.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promesa"
+    }
+  ]
+}
+{% endschema %}

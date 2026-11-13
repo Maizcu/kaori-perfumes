@@ -35,14 +35,28 @@
 
     <div class="hero__buttons">
       {%- if section.settings.button_label != blank -%}
-        <a href="{{ section.settings.button_link }}" class="pill">
+        <a
+          {% if section.settings.button_link == blank %}
+            role="link" aria-disabled="true"
+          {% else %}
+            href="{{ section.settings.button_link }}"
+          {% endif %}
+          class="pill"
+        >
           {{- section.settings.button_label | escape -}}
           <span class="pill__icon" aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
         </a>
       {%- endif -%}
 
       {%- if section.settings.button_label_2 != blank -%}
-        <a href="{{ section.settings.button_link_2 }}" class="pill pill--lime">
+        <a
+          {% if section.settings.button_link_2 == blank %}
+            role="link" aria-disabled="true"
+          {% else %}
+            href="{{ section.settings.button_link_2 }}"
+          {% endif %}
+          class="pill pill--lime"
+        >
           {{- section.settings.button_label_2 | escape -}}
           <span class="pill__icon" aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
         </a>

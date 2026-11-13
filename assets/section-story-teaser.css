@@ -35,22 +35,6 @@
   text-align: center;
 }
 
-.story__stamp {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 6.4rem;
-  height: 6.4rem;
-  border-radius: 0.8rem;
-  background: var(--kaori-ink);
-  color: var(--kaori-cream);
-  font-family: 'Yu Mincho', 'Hiragino Mincho ProN', serif;
-  font-size: 3.4rem;
-  line-height: 1;
-  transform: rotate(-5deg);
-  box-shadow: inset 0 0 0 0.4rem var(--kaori-ink), inset 0 0 0 0.6rem rgba(244, 241, 236, 0.85);
-}
-
 .story__title {
   margin: 0;
   font-size: clamp(4.4rem, 4.8vw, 7.2rem);

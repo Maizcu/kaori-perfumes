@@ -1,0 +1,106 @@
+{{ 'section-legend-hero.css' | asset_url | stylesheet_tag }}
+
+<div class="legend color-{{ section.settings.color_scheme }}">
+  {% render 'enso', class: 'legend__enso' %}
+
+  <div class="legend__inner page-width">
+    <div class="legend__content">
+      <p class="eyebrow legend__label">{{ section.settings.label | escape }}</p>
+      <h1 class="legend__title">{{ section.settings.title }}</h1>
+      <p class="legend__text">{{ section.settings.text | escape }}</p>
+    </div>
+
+    <div class="legend__mark" aria-hidden="true">
+      <p class="legend__jp" lang="ja">{{ section.settings.japanese | escape }}</p>
+      <span class="stamp stamp--on-dark" lang="ja">{{ section.settings.stamp | escape }}</span>
+    </div>
+  </div>
+
+  <span class="legend__waves" aria-hidden="true"></span>
+</div>
+
+<div class="legend-gallery">
+  {%- assign positions = 'left,center,right' | split: ',' -%}
+  {%- for position in positions -%}
+    {%- liquid
+      assign key = 'image_' | append: position
+      assign image = section.settings[key]
+      assign image_class = 'legend-gallery__' | append: position
+    -%}
+    {%- if image != blank -%}
+      {{
+        image
+        | image_url: width: 1200
+        | image_tag:
+          class: image_class,
+          loading: 'lazy',
+          widths: '400, 800, 1200',
+          sizes: '(min-width: 750px) 33vw, 100vw'
+      }}
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "Leyenda",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de color",
+      "default": "scheme-3"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Antetítulo",
+      "default": "Nuestra historia"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Título",
+      "default": "La leyenda <em>de Kaori</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Texto",
+      "default": "Dicen que un aroma puede devolverte a un lugar. Esta es la historia de cómo cinco aromas aprendieron a quedarse."
+    },
+    {
+      "type": "text",
+      "id": "japanese",
+      "label": "Texto en japonés",
+      "default": "香りの伝説"
+    },
+    {
+      "type": "text",
+      "id": "stamp",
+      "label": "Sello",
+      "default": "香"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_left",
+      "label": "Imagen izquierda"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_center",
+      "label": "Imagen central"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_right",
+      "label": "Imagen derecha"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Leyenda"
+    }
+  ]
+}
+{% endschema %}

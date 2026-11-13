@@ -1,0 +1,226 @@
+.ritual {
+  display: block;
+  padding-bottom: 11.2rem;
+}
+
+.ritual__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2.4rem 6.4rem;
+  padding: 5.6rem 0 4rem;
+}
+
+.ritual__heading {
+  flex: 1 1 42rem;
+}
+
+.ritual__heading .eyebrow {
+  margin-bottom: 1.6rem;
+}
+
+.ritual__title {
+  margin: 0;
+  font-size: clamp(6rem, 7.4vw, 11.2rem);
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+.ritual__intro {
+  flex: 1 1 32rem;
+  max-width: 44rem;
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+.ritual__muted,
+.ritual__count,
+.ritual-option__price,
+.ritual__slot.is-empty {
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.ritual__layout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 4.8rem;
+}
+
+.ritual__steps {
+  flex: 999 1 64rem;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5.6rem;
+}
+
+.ritual__step-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1.6rem;
+  margin-bottom: 2.4rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.2);
+}
+
+.ritual__step-title,
+.ritual__summary-title {
+  margin: 0;
+  font-size: 4rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.ritual__count {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.ritual__options {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 2rem;
+}
+
+.ritual-option {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.ritual__step[data-full] .ritual-option:not(:has(:checked)) {
+  opacity: 0.45;
+}
+
+.ritual__step[data-full] .ritual-option:not(:has(:disabled)):hover {
+  opacity: 1;
+}
+
+.ritual-option:has(:disabled) {
+  cursor: not-allowed;
+}
+
+.ritual-option__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  border-radius: 1.6rem;
+  background: var(--kaori-sand);
+  outline: 2px solid transparent;
+  outline-offset: 3px;
+}
+
+.ritual-option:has(:checked) .ritual-option__media {
+  outline-color: rgb(var(--color-foreground));
+}
+
+.ritual-option:has(:focus-visible) .ritual-option__media {
+  box-shadow: 0 0 0 0.6rem rgba(var(--color-foreground), 0.2);
+}
+
+.ritual-option__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.ritual-option__check {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: var(--kaori-lime);
+  color: var(--kaori-ink);
+}
+
+.ritual-option:has(:checked) .ritual-option__check {
+  display: flex;
+}
+
+.ritual-option__check svg {
+  width: 1.4rem;
+  height: auto;
+}
+
+.ritual-option__name {
+  font-family: var(--font-heading-family);
+  font-size: 2.4rem;
+  line-height: 1.1;
+}
+
+.ritual-option__price {
+  margin-top: -0.6rem;
+  font-size: 1.4rem;
+}
+
+.ritual__summary {
+  flex: 1 1 34rem;
+  position: sticky;
+  top: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 3.2rem;
+  border-radius: 2rem;
+}
+
+.ritual__slots {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(var(--color-foreground), 0.25);
+}
+
+.ritual__slot {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.2rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid rgba(var(--color-foreground), 0.25);
+  font-size: 1.5rem;
+}
+
+.ritual__totals {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.8rem 1.6rem;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.ritual__totals dd {
+  margin: 0;
+  text-align: right;
+}
+
+.ritual__totals .ritual__total-label {
+  padding-top: 0.8rem;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.ritual__totals .ritual__total {
+  padding-top: 0.4rem;
+  font-size: 2.4rem;
+}
+
+.ritual__summary .pill {
+  justify-content: space-between;
+  min-height: 5.6rem;
+}
+
+.ritual__message {
+  margin: 0;
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.85);
+}

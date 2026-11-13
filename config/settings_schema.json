@@ -1445,6 +1445,19 @@
         "info": "t:settings_schema.cart.settings.cart_drawer.collection.info"
       },
       {
+        "type": "product",
+        "id": "cart_upsell_product",
+        "label": "Producto sugerido",
+        "info": "Se ofrece en el carrito lateral si aún no está en él"
+      },
+      {
+        "type": "number",
+        "id": "free_shipping_threshold",
+        "label": "Envío gratis a partir de (€)",
+        "default": 90,
+        "info": "Pon la misma cantidad que en la tarifa de envío del admin. Con 0 se oculta la barra."
+      },
+      {
         "type": "color_scheme",
         "id": "cart_color_scheme",
         "label": "t:sections.all.colors.label",

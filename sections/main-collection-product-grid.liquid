@@ -185,6 +185,37 @@
                   </li>
                   {%- assign skip_card_product_styles = true -%}
                 {%- endfor -%}
+                {%- if section.settings.show_promo and paginate.current_page == 1 -%}
+                  <li class="grid__item grid__item--promo">
+                    <div class="collection-promo color-{{ section.settings.promo_color_scheme }}">
+                      <p class="eyebrow">{{ section.settings.promo_label | escape }}</p>
+                      {%- if section.settings.promo_image != blank -%}
+                        {{
+                          section.settings.promo_image
+                          | image_url: width: 400
+                          | image_tag: class: 'collection-promo__image', alt: '', loading: 'lazy'
+                        }}
+                      {%- endif -%}
+                      <div class="collection-promo__body">
+                        <p class="collection-promo__title">{{ section.settings.promo_title }}</p>
+                        <p class="collection-promo__text">{{ section.settings.promo_text | escape }}</p>
+                        <a
+                          {% if section.settings.promo_link == blank %}
+                            role="link" aria-disabled="true"
+                          {% else %}
+                            href="{{ section.settings.promo_link }}"
+                          {% endif %}
+                          class="pill"
+                        >
+                          {{- section.settings.promo_button_label | escape -}}
+                          <span class="pill__icon" aria-hidden="true">
+                            {{- 'icon-arrow.svg' | inline_asset_content -}}
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </li>
+                {%- endif -%}
               </ul>
 
               {%- if paginate.pages > 1 -%}
@@ -386,6 +417,56 @@
       "id": "enable_sorting",
       "default": true,
       "label": "t:sections.main-collection-product-grid.settings.enable_sorting.label"
+    },
+    {
+      "type": "header",
+      "content": "Tarjeta promocional"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_promo",
+      "label": "Mostrar tarjeta",
+      "default": false
+    },
+    {
+      "type": "color_scheme",
+      "id": "promo_color_scheme",
+      "label": "Esquema de color",
+      "default": "scheme-4"
+    },
+    {
+      "type": "text",
+      "id": "promo_label",
+      "label": "Antetítulo",
+      "default": "Pack a tu medida"
+    },
+    {
+      "type": "image_picker",
+      "id": "promo_image",
+      "label": "Icono"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "promo_title",
+      "label": "Título",
+      "default": "2 perfumes <em>+ 1 vela</em>"
+    },
+    {
+      "type": "text",
+      "id": "promo_text",
+      "label": "Texto",
+      "default": "Crea tu ritual y ahorra un 15 % en todo el pack."
+    },
+    {
+      "type": "text",
+      "id": "promo_button_label",
+      "label": "Botón",
+      "default": "Crear mi ritual"
+    },
+    {
+      "type": "url",
+      "id": "promo_link",
+      "label": "Enlace"
     },
     {
       "type": "header",

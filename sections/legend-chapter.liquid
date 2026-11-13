@@ -1,0 +1,94 @@
+{{ 'section-legend-chapter.css' | asset_url | stylesheet_tag }}
+
+{%- assign brightness = section.settings.color_scheme.settings.background | color_brightness -%}
+
+<div class="chapter color-{{ section.settings.color_scheme }}{% if brightness < 128 %} chapter--dark{% endif %}">
+  <div class="page-width">
+    <div class="chapter__intro">
+      <div class="chapter__mark" aria-hidden="true">
+        <span class="chapter__tag" lang="ja">{{ section.settings.japanese | escape }}</span>
+        <span class="chapter__num" lang="ja">{{ section.settings.numeral | escape }}</span>
+      </div>
+
+      <div class="chapter__content">
+        <p class="eyebrow chapter__muted">{{ section.settings.label | escape }}</p>
+        <h2 class="chapter__title">{{ section.settings.title }}</h2>
+        <div class="chapter__text chapter__muted">{{ section.settings.text }}</div>
+      </div>
+    </div>
+
+    {%- if section.settings.collection != blank -%}
+      <ul class="chapter__scents" role="list">
+        {%- for product in section.settings.collection.products -%}
+          {%- assign ingredient = product.metafields.custom.ingrediente.value -%}
+          {%- if ingredient -%}
+            <li>
+              <a href="{{ product.url }}" class="chapter__scent">
+                {%- if ingredient.imagen != blank -%}
+                  {{ ingredient.imagen.value | image_url: width: 320 | image_tag: alt: '', loading: 'lazy' }}
+                {%- endif -%}
+                <span class="chapter__scent-jp chapter__muted" lang="ja">{{ ingredient.nombre_japones | escape }}</span>
+                <span class="chapter__scent-name">{{ product.title | escape }}</span>
+                <span class="chapter__scent-text chapter__muted">{{ ingredient.leyenda | escape }}</span>
+              </a>
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Capítulo",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de color",
+      "default": "scheme-1"
+    },
+    {
+      "type": "text",
+      "id": "japanese",
+      "label": "Texto en japonés",
+      "default": "第一章　庭"
+    },
+    {
+      "type": "text",
+      "id": "numeral",
+      "label": "Número",
+      "default": "一"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Antetítulo",
+      "default": "Capítulo uno"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Título",
+      "default": "El jardín donde <em>nada se marchitaba</em>"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texto"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Aromas de la colección",
+      "info": "Opcional. Muestra el ingrediente de cada producto."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Capítulo"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,125 @@
+.product-ritual {
+  display: block;
+  margin-top: clamp(7.2rem, 9vw, 12rem);
+}
+
+.product-ritual__box {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  padding: 5.6rem clamp(2.4rem, 4vw, 5.6rem);
+  border-radius: 2rem;
+}
+
+.product-ritual__intro {
+  flex: 1 1 32rem;
+  max-width: 42rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.product-ritual__intro p {
+  margin: 0;
+}
+
+.product-ritual__title {
+  margin: 0;
+  font-size: clamp(4.4rem, 4.6vw, 6.4rem);
+  line-height: 0.95;
+}
+
+.product-ritual__title em {
+  display: block;
+}
+
+.product-ritual__items {
+  flex: 2 1 56rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.product-ritual__item {
+  flex: 1 1 14rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.product-ritual__item img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 1.4rem;
+}
+
+.product-ritual__name {
+  font-family: var(--font-heading-family);
+  font-size: 2.2rem;
+  line-height: 1.1;
+}
+
+.product-ritual__plus {
+  font-family: var(--font-heading-family);
+  font-size: 3.2rem;
+}
+
+.product-ritual__buy {
+  flex: 1 1 20rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.product-ritual__buy .pill {
+  justify-content: space-between;
+}
+
+.product-ritual__price {
+  margin: 0;
+  font-size: 2.6rem;
+}
+
+.product-ritual__price s {
+  margin-left: 0.8rem;
+  font-size: 1.6rem;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.product-ritual__message {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+@media screen and (max-width: 749px) {
+  .product-ritual__box {
+    padding: 3.2rem 2rem;
+  }
+
+  .product-ritual__items {
+    align-items: flex-start;
+  }
+
+  .product-ritual__item {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .product-ritual__name {
+    font-size: 1.6rem;
+  }
+
+  .product-ritual__plus {
+    align-self: center;
+    font-size: 2.4rem;
+  }
+
+  .product-ritual__buy {
+    flex-basis: 100%;
+  }
+}

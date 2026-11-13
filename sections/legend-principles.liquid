@@ -1,0 +1,132 @@
+{{ 'section-legend-principles.css' | asset_url | stylesheet_tag }}
+
+<div class="principles color-{{ section.settings.color_scheme }}">
+  <div class="principles__inner page-width">
+    <h2 class="principles__title">{{ section.settings.title }}</h2>
+
+    <ol class="principles__list" role="list">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'principle' -%}
+          <li class="principles__item" {{ block.shopify_attributes }}>
+            <h3 class="principles__name">{{ block.settings.title | escape }}</h3>
+            <p class="principles__text">{{ block.settings.text | escape }}</p>
+          </li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ol>
+
+    <dl class="principles__facts">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'fact' -%}
+          <div {{ block.shopify_attributes }}>
+            <dt class="principles__value">{{ block.settings.title | escape }}</dt>
+            <dd class="principles__fact">{{ block.settings.text | escape }}</dd>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </dl>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Principios",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de color",
+      "default": "scheme-2"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Título",
+      "default": "Tres <em>principios</em>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "principle",
+      "name": "Principio",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Texto"
+        }
+      ]
+    },
+    {
+      "type": "fact",
+      "name": "Dato",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Cifra"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texto"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Principios",
+      "blocks": [
+        {
+          "type": "principle",
+          "settings": {
+            "title": "Un ingrediente que reconoces",
+            "text": "Cada aroma nace de algo que ya has olido: una fruta, una madera, una flor. Así es fácil elegir aunque no lo hayas probado."
+          }
+        },
+        {
+          "type": "principle",
+          "settings": {
+            "title": "Lotes pequeños",
+            "text": "Mezclamos y envasamos poco a poco, como ella llenaba sus frascos, para cuidar cada uno y no acumular nada que no vaya a usarse."
+          }
+        },
+        {
+          "type": "principle",
+          "settings": {
+            "title": "Hecho para quedarse",
+            "text": "Eau de parfum con un 18 % de esencia y velas de cera vegetal. Pocas cosas, pero que duren."
+          }
+        },
+        {
+          "type": "fact",
+          "settings": {
+            "title": "18 %",
+            "text": "de esencia en cada eau de parfum"
+          }
+        },
+        {
+          "type": "fact",
+          "settings": {
+            "title": "100 %",
+            "text": "cera vegetal en nuestras velas"
+          }
+        },
+        {
+          "type": "fact",
+          "settings": {
+            "title": "5 + 3",
+            "text": "perfumes y velas, ni uno más"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

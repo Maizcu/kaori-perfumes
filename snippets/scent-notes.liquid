@@ -1,0 +1,70 @@
+{%- liquid
+  assign notes = product.metafields.custom
+  assign ingredient = notes.ingrediente.value
+-%}
+<div class="scent-notes" {{ block.shopify_attributes }}>
+  <div class="scent-notes__head">
+    <h2 class="eyebrow">{{ block.settings.heading | escape }}</h2>
+    {%- if ingredient.imagen != blank -%}
+      {{
+        ingredient.imagen.value
+        | image_url: width: 200
+        | image_tag: class: 'scent-notes__icon', alt: '', loading: 'lazy'
+      }}
+    {%- endif -%}
+  </div>
+
+  <dl class="scent-notes__list">
+    {%- if notes.notas_salida != blank -%}
+      <dt>{{ 'sections.scent_explorer.top_notes' | t }}</dt>
+      <dd>{{ notes.notas_salida | escape }}</dd>
+    {%- endif -%}
+    {%- if notes.notas_corazon != blank -%}
+      <dt>{{ 'sections.scent_explorer.heart_notes' | t }}</dt>
+      <dd>{{ notes.notas_corazon | escape }}</dd>
+    {%- endif -%}
+    {%- if notes.notas_fondo != blank -%}
+      <dt>{{ 'sections.scent_explorer.base_notes' | t }}</dt>
+      <dd>{{ notes.notas_fondo | escape }}</dd>
+    {%- endif -%}
+  </dl>
+
+  <div class="scent-notes__facts">
+    {%- if notes.intensidad != blank -%}
+      {%- assign intensity = notes.intensidad.value -%}
+      <div>
+        <span>{{ 'products.scent.intensity' | t }}</span>
+        <span
+          class="scent-notes__meter"
+          role="img"
+          aria-label="{{ 'products.scent.intensity_value' | t: value: intensity }}"
+        >
+          {%- for i in (1..5) -%}
+            <span
+              {% if i <= intensity %}
+                class="is-on"
+              {% endif %}
+            ></span>
+          {%- endfor -%}
+        </span>
+      </div>
+    {%- endif -%}
+    {%- if notes.duracion != blank -%}
+      <div>
+        <span>{{ 'products.scent.duration' | t }}</span>
+        <span>{{ notes.duracion | escape }}</span>
+      </div>
+    {%- endif -%}
+    {%- if notes.momento != blank -%}
+      <div>
+        <span>{{ 'products.scent.moment' | t }}</span>
+        <span>{{ notes.momento | escape }}</span>
+      </div>
+    {%- elsif notes.formato != blank -%}
+      <div>
+        <span>{{ 'products.scent.format' | t }}</span>
+        <span>{{ notes.formato | escape }}</span>
+      </div>
+    {%- endif -%}
+  </div>
+</div>

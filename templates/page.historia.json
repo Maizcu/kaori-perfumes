@@ -1,0 +1,157 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "legend_hero_hdCUCU": {
+      "type": "legend-hero",
+      "name": "Leyenda",
+      "settings": {
+        "color_scheme": "",
+        "label": "Nuestra historia",
+        "title": "La leyenda <em>de Kaori</em>",
+        "text": "Dicen que un aroma puede devolverte a un lugar. Esta es la historia de cómo cinco aromas aprendieron a quedarse.",
+        "japanese": "香りの伝説",
+        "stamp": "香",
+        "image_left": "shopify://shop_images/historia-jardin.jpg",
+        "image_center": "shopify://shop_images/historia-fuji.jpg",
+        "image_right": "shopify://shop_images/historia-templo-cerezo.jpg"
+      }
+    },
+    "legend_chapter_eDREAA": {
+      "type": "legend-chapter",
+      "name": "Capítulo",
+      "settings": {
+        "color_scheme": "",
+        "japanese": "第一章　庭",
+        "numeral": "一",
+        "label": "Capítulo uno",
+        "title": "El jardín donde <em>nada se marchitaba</em>",
+        "text": "<p>Cuentan que, al pie de una montaña cubierta de niebla, una vieja perfumista cuidaba un jardín donde nada se marchitaba. Allí crecían un granado que nunca dejaba de dar fruto, un cerezo que florecía de noche y un sándalo tan antiguo que su sombra olía a calma.</p><p>Cada mañana recogía lo que el jardín le daba —una granada abierta, una lágrima de ámbar, un coco que el mar había dejado en la orilla— y lo guardaba en pequeños frascos de cristal, para que no se le olvidara.</p>",
+        "collection": ""
+      }
+    },
+    "legend_chapter_3XpRft": {
+      "type": "legend-chapter",
+      "name": "Capítulo",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "japanese": "第二章　五つの香り",
+        "numeral": "二",
+        "label": "Capítulo dos",
+        "title": "&nbsp;Los cinco <em>aromas</em>",
+        "text": "<p>Con los años, de aquel jardín salieron cinco aromas. Cada uno guardaba un recuerdo distinto, y ella les puso nombre para no confundirlos.</p>",
+        "collection": "perfumes"
+      }
+    },
+    "legend_promise_NRx6hj": {
+      "type": "legend-promise",
+      "name": "Promesa",
+      "settings": {
+        "color_scheme": "",
+        "japanese": "第三章　約束",
+        "label": "Capítulo tres · La promesa",
+        "intro": "Antes de marcharse, dejó escrita una sola frase en la puerta del jardín:",
+        "quote": "«Quien lleve uno de estos aromas <em>nunca olvidará el lugar donde fue feliz.</em>»",
+        "stamp": "香",
+        "text": "<p>Kaori nace en Madrid para guardar esa promesa en un frasco. En japonés, <em>kaori</em> significa aroma; para nosotros, también significa volver.</p>"
+      }
+    },
+    "legend_principles_jfAgay": {
+      "type": "legend-principles",
+      "blocks": {
+        "principle_FYUCCb": {
+          "type": "principle",
+          "settings": {
+            "title": "Un ingrediente que reconoces",
+            "text": "Cada aroma nace de algo que ya has olido: una fruta, una madera, una flor. Así es fácil elegir aunque no lo hayas probado."
+          }
+        },
+        "principle_ykxDLf": {
+          "type": "principle",
+          "settings": {
+            "title": "Lotes pequeños",
+            "text": "Mezclamos y envasamos poco a poco, como ella llenaba sus frascos, para cuidar cada uno y no acumular nada que no vaya a usarse."
+          }
+        },
+        "principle_nmrgJ9": {
+          "type": "principle",
+          "settings": {
+            "title": "Hecho para quedarse",
+            "text": "Eau de parfum con un 18 % de esencia y velas de cera vegetal. Pocas cosas, pero que duren."
+          }
+        },
+        "fact_LVjew4": {
+          "type": "fact",
+          "settings": {
+            "title": "18 %",
+            "text": "de esencia en cada eau de parfum"
+          }
+        },
+        "fact_BNUhNX": {
+          "type": "fact",
+          "settings": {
+            "title": "100 %",
+            "text": "cera vegetal en nuestras velas"
+          }
+        },
+        "fact_6Mzh4T": {
+          "type": "fact",
+          "settings": {
+            "title": "5 + 3",
+            "text": "perfumes y velas, ni uno más"
+          }
+        }
+      },
+      "block_order": [
+        "principle_FYUCCb",
+        "principle_ykxDLf",
+        "principle_nmrgJ9",
+        "fact_LVjew4",
+        "fact_BNUhNX",
+        "fact_6Mzh4T"
+      ],
+      "name": "Principios",
+      "settings": {
+        "color_scheme": "",
+        "title": "Tres <em>principios</em>"
+      }
+    },
+    "legend_cta_iJHTkR": {
+      "type": "legend-cta",
+      "name": "Llamada final",
+      "settings": {
+        "color_scheme": "",
+        "title": "Encuentra <em>tu aroma</em>",
+        "text": "Cinco perfumes, tres velas y un ritual para combinarlos.",
+        "button_label": "Descubrir perfumes",
+        "button_link": "shopify://collections/perfumes",
+        "button_label_2": "Volver al inicio",
+        "button_link_2": ""
+      }
+    }
+  },
+  "order": [
+    "main",
+    "legend_hero_hdCUCU",
+    "legend_chapter_eDREAA",
+    "legend_chapter_3XpRft",
+    "legend_promise_NRx6hj",
+    "legend_principles_jfAgay",
+    "legend_cta_iJHTkR"
+  ]
+}

@@ -1,0 +1,252 @@
+{{ 'section-ritual-builder.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'ritual.js' | asset_url }}" defer="defer"></script>
+
+<ritual-builder
+  class="ritual page-width"
+  data-discount="{{ section.settings.discount }}"
+  data-incomplete="{{ section.settings.incomplete_text | escape }}"
+  data-ready="{{ section.settings.ready_text | escape }}"
+  data-label-incomplete="{{ section.settings.button_incomplete | escape }}"
+  data-label-ready="{{ section.settings.button_label | escape }}"
+>
+  <div class="ritual__header">
+    <div class="ritual__heading">
+      <p class="eyebrow ritual__muted">{{ section.settings.label | escape }}</p>
+      <h1 class="ritual__title">{{ section.settings.title }}</h1>
+    </div>
+    <p class="ritual__intro ritual__muted">{{ section.settings.text | escape }}</p>
+  </div>
+
+  <form action="{{ routes.cart_add_url }}" method="post" class="ritual__layout">
+    <div class="ritual__steps">
+      <div
+        class="ritual__step"
+        role="group"
+        aria-labelledby="RitualPerfumes-{{ section.id }}"
+        data-group="perfume"
+        data-max="2"
+      >
+        <div class="ritual__step-head">
+          <h2 id="RitualPerfumes-{{ section.id }}" class="ritual__step-title">{{ section.settings.perfumes_title }}</h2>
+          <p class="ritual__count" aria-live="polite">
+            <span data-count>0</span> {{ section.settings.perfumes_count | escape }}
+          </p>
+        </div>
+        <div class="ritual__options">
+          {%- for product in section.settings.perfumes.products -%}
+            {%- if product.variants.first.available -%}
+              {%- render 'ritual-option', product: product, format: product.metafields.custom.formato.value -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <div
+        class="ritual__step"
+        role="group"
+        aria-labelledby="RitualCandles-{{ section.id }}"
+        data-group="candle"
+        data-max="1"
+      >
+        <div class="ritual__step-head">
+          <h2 id="RitualCandles-{{ section.id }}" class="ritual__step-title">{{ section.settings.candles_title }}</h2>
+          <p class="ritual__count" aria-live="polite">
+            <span data-count>0</span> {{ section.settings.candles_count | escape }}
+          </p>
+        </div>
+        <div class="ritual__options">
+          {%- for product in section.settings.candles.products -%}
+            {%- if product.variants.first.available -%}
+              {%- render 'ritual-option', product: product -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+
+    <aside
+      class="ritual__summary color-{{ section.settings.summary_scheme }}"
+      aria-labelledby="RitualSummary-{{ section.id }}"
+    >
+      <h2 id="RitualSummary-{{ section.id }}" class="ritual__summary-title">{{ section.settings.summary_title }}</h2>
+
+      <ul class="ritual__slots" role="list">
+        {%- for i in (1..2) -%}
+          <li
+            class="ritual__slot is-empty"
+            data-slot="perfume"
+            data-placeholder="{{ section.settings.perfume_placeholder | escape }}"
+          >
+            <span>{{ section.settings.perfume_placeholder | escape }}</span>
+            <span>—</span>
+          </li>
+        {%- endfor -%}
+        <li
+          class="ritual__slot is-empty"
+          data-slot="candle"
+          data-placeholder="{{ section.settings.candle_placeholder | escape }}"
+        >
+          <span>{{ section.settings.candle_placeholder | escape }}</span>
+          <span>—</span>
+        </li>
+      </ul>
+
+      <dl class="ritual__totals">
+        <dt>{{ 'sections.cart.subtotal' | t }}</dt>
+        <dd data-subtotal>{{ 0 | money_without_trailing_zeros }}</dd>
+        <dt>{{ section.settings.discount_label | escape }} ({{ section.settings.discount }} %)</dt>
+        <dd data-saving>—</dd>
+        <dt class="ritual__total-label">{{ 'sections.cart.headings.total' | t }}</dt>
+        <dd class="ritual__total" data-total>{{ 0 | money_without_trailing_zeros }}</dd>
+      </dl>
+
+      <button type="submit" class="pill" disabled>
+        <span data-label>{{ section.settings.button_incomplete | escape }}</span>
+        <span class="pill__icon" aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+      </button>
+      <p class="ritual__message" aria-live="polite" data-message>{{ section.settings.incomplete_text | escape }}</p>
+    </aside>
+  </form>
+</ritual-builder>
+
+{% schema %}
+{
+  "name": "Crea tu ritual",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Antetítulo",
+      "default": "Pack a tu medida · 15 % de descuento"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Título",
+      "default": "Crea tu <em>ritual</em>"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Texto",
+      "default": "Elige dos perfumes de 50 ml y una vela. El descuento se aplica solo en el carrito."
+    },
+    {
+      "type": "range",
+      "id": "discount",
+      "label": "Descuento",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "%",
+      "default": 15,
+      "info": "Solo es el ahorro que se muestra. El descuento real es el automático del admin."
+    },
+    {
+      "type": "header",
+      "content": "Paso 1"
+    },
+    {
+      "type": "collection",
+      "id": "perfumes",
+      "label": "Perfumes"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "perfumes_title",
+      "label": "Título",
+      "default": "<em>1.</em> Elige dos perfumes"
+    },
+    {
+      "type": "text",
+      "id": "perfumes_count",
+      "label": "Contador",
+      "default": "de 2 elegidos"
+    },
+    {
+      "type": "header",
+      "content": "Paso 2"
+    },
+    {
+      "type": "collection",
+      "id": "candles",
+      "label": "Velas"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "candles_title",
+      "label": "Título",
+      "default": "<em>2.</em> Añade una vela"
+    },
+    {
+      "type": "text",
+      "id": "candles_count",
+      "label": "Contador",
+      "default": "de 1 elegida"
+    },
+    {
+      "type": "header",
+      "content": "Resumen"
+    },
+    {
+      "type": "color_scheme",
+      "id": "summary_scheme",
+      "label": "Esquema de color",
+      "default": "scheme-2"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "summary_title",
+      "label": "Título",
+      "default": "Tu <em>ritual</em>"
+    },
+    {
+      "type": "text",
+      "id": "perfume_placeholder",
+      "label": "Hueco de perfume",
+      "default": "Elige un perfume"
+    },
+    {
+      "type": "text",
+      "id": "candle_placeholder",
+      "label": "Hueco de vela",
+      "default": "Elige una vela"
+    },
+    {
+      "type": "text",
+      "id": "discount_label",
+      "label": "Texto del descuento",
+      "default": "Descuento ritual"
+    },
+    {
+      "type": "text",
+      "id": "button_incomplete",
+      "label": "Botón sin completar",
+      "default": "Completa tu ritual"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Botón completo",
+      "default": "Añadir el ritual al carrito"
+    },
+    {
+      "type": "text",
+      "id": "incomplete_text",
+      "label": "Aviso sin completar",
+      "default": "Elige dos perfumes y una vela para activar el descuento."
+    },
+    {
+      "type": "text",
+      "id": "ready_text",
+      "label": "Aviso completo",
+      "default": "Todo listo: el descuento se aplica al añadir el ritual."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Crea tu ritual"
+    }
+  ]
+}
+{% endschema %}

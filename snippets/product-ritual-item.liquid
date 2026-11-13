@@ -1,0 +1,12 @@
+{%- assign variant = product.variants.first -%}
+
+<div class="product-ritual__item">
+  {%- if product.featured_image -%}
+    {{ product.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: '' }}
+  {%- endif -%}
+  <span class="product-ritual__name">
+    {{- product.title | escape -}}
+    {%- unless product.has_only_default_variant %} · {{ variant.title | escape }}{% endunless -%}
+  </span>
+  <input type="hidden" name="id" value="{{ variant.id }}">
+</div>

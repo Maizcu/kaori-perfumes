@@ -1,0 +1,59 @@
+.promise {
+  position: relative;
+  overflow: hidden;
+}
+
+.promise__enso {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(76rem, 120vw);
+  height: auto;
+  transform: translate(-50%, -50%) rotate(-20deg);
+  color: rgba(var(--color-foreground), 0.07);
+}
+
+.promise__inner {
+  position: relative;
+  max-width: 100rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.8rem;
+  padding-top: clamp(12rem, 13vw, 18.4rem);
+  padding-bottom: clamp(12rem, 13vw, 18.4rem);
+  text-align: center;
+}
+
+.promise__muted {
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.promise__jp {
+  margin: 0;
+  font-family: var(--font-jp-family);
+  font-size: 1.7rem;
+  letter-spacing: 0.32em;
+}
+
+.promise__text {
+  max-width: 56rem;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.promise__text p {
+  margin: 0;
+}
+
+.promise__quote {
+  margin: 0;
+  font-family: var(--font-heading-family);
+  font-size: clamp(4rem, 4.8vw, 7.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  padding: 0;
+  border: 0;
+  font-style: normal;
+  color: rgb(var(--color-foreground));
+}

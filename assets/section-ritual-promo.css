@@ -9,7 +9,7 @@
 
 .ritual-promo__media {
   position: relative;
-  flex: 1 1 60rem;
+  flex: 999 1 60rem;
   min-width: 0;
   min-height: 42rem;
   overflow: hidden;
@@ -25,7 +25,7 @@
 }
 
 .ritual-promo__box {
-  flex: 0 1 47rem;
+  flex: 1 1 47rem;
   min-width: 0;
   display: flex;
   flex-direction: column;

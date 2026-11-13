@@ -32,7 +32,7 @@
           "settings": {
             "product": "granada",
             "short_name": "",
-            "icon": "{{ block.settings.product.metafields.custom.ingrediente.value.imagen.value }}"
+            "icon": "shopify://shop_images/icono-explorador-granada.png"
           }
         },
         "scent_ek9nhq": {
@@ -40,7 +40,7 @@
           "settings": {
             "product": "cereza-negra",
             "short_name": "Cereza",
-            "icon": "{{ block.settings.product.metafields.custom.ingrediente.value.imagen.value }}"
+            "icon": "shopify://shop_images/icono-explorador-cereza-negra.png"
           }
         },
         "scent_hHMqcw": {
@@ -48,7 +48,7 @@
           "settings": {
             "product": "coco",
             "short_name": "",
-            "icon": "{{ block.settings.product.metafields.custom.ingrediente.value.imagen.value }}"
+            "icon": "shopify://shop_images/icono-explorador-coco.png"
           }
         },
         "scent_TGjNw3": {
@@ -56,7 +56,7 @@
           "settings": {
             "product": "ambar",
             "short_name": "",
-            "icon": "{{ block.settings.product.metafields.custom.ingrediente.value.imagen.value }}"
+            "icon": "shopify://shop_images/icono-explorador-ambar.png"
           }
         },
         "scent_WybeVd": {
@@ -64,7 +64,7 @@
           "settings": {
             "product": "sandalo",
             "short_name": "",
-            "icon": "{{ block.settings.product.metafields.custom.ingrediente.value.imagen.value }}"
+            "icon": "shopify://shop_images/icono-explorador-sandalo.png"
           }
         }
       },
@@ -173,8 +173,8 @@
       "type": "story-teaser",
       "name": "Nuestra historia",
       "settings": {
-        "image_left": "shopify://shop_images/historia-granado.jpg",
-        "image_right": "shopify://shop_images/historia-piedras-cerezo.jpg",
+        "image_left": "shopify://shop_images/home-perfumista.jpg",
+        "image_right": "shopify://shop_images/home-sombrillas.jpg",
         "stamp": "香",
         "label": "Nuestra historia · La leyenda de Kaori",
         "title": "Un aroma puede <em>devolverte a un lugar.</em>",

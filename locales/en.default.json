@@ -224,6 +224,13 @@
       "sort_by_label": "Sort by:",
       "to": "To",
       "clear_filter": "Remove filter"
+    },
+    "scent": {
+      "intensity": "Intensity",
+      "intensity_value": "Intensity {{ value }} of 5",
+      "duration": "Longevity",
+      "moment": "Best for",
+      "format": "Format"
     }
   },
   "templates": {
@@ -304,6 +311,13 @@
     },
     "cart": {
       "title": "Your cart",
+      "title_html": "Your <em>cart</em>",
+      "remove": "Remove",
+      "subtotal": "Subtotal",
+      "add": "Add",
+      "upsell": "Complete your order",
+      "free_shipping_missing": "You're {{ amount }} away from free shipping.",
+      "free_shipping_reached": "You've got free shipping!",
       "caption": "Cart items",
       "remove_title": "Remove {{ title }}",
       "estimated_total": "Estimated total",

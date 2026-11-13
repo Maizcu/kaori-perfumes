@@ -5,13 +5,18 @@
     {{
       section.settings.image_left
       | image_url: width: 700
-      | image_tag: class: 'story__image story__image--left', alt: '', loading: 'lazy', widths: '300, 500, 700', sizes: '20vw'
+      | image_tag:
+        class: 'story__image story__image--left',
+        alt: '',
+        loading: 'lazy',
+        widths: '300, 500, 700',
+        sizes: '20vw'
     }}
   {%- endif -%}
 
   <div class="story__content">
     {%- if section.settings.stamp != blank -%}
-      <span class="story__stamp" lang="ja" aria-hidden="true">{{ section.settings.stamp | escape }}</span>
+      <span class="stamp" lang="ja" aria-hidden="true">{{ section.settings.stamp | escape }}</span>
     {%- endif -%}
 
     {%- if section.settings.label != blank -%}
@@ -25,7 +30,14 @@
     {%- endif -%}
 
     {%- if section.settings.link_label != blank -%}
-      <a href="{{ section.settings.link }}" class="text-link">
+      <a
+        {% if section.settings.link == blank %}
+          role="link" aria-disabled="true"
+        {% else %}
+          href="{{ section.settings.link }}"
+        {% endif %}
+        class="text-link"
+      >
         {{- section.settings.link_label | escape -}}
         {{ 'icon-arrow.svg' | inline_asset_content }}
       </a>
@@ -36,7 +48,12 @@
     {{
       section.settings.image_right
       | image_url: width: 800
-      | image_tag: class: 'story__image story__image--right', alt: '', loading: 'lazy', widths: '300, 500, 800', sizes: '22vw'
+      | image_tag:
+        class: 'story__image story__image--right',
+        alt: '',
+        loading: 'lazy',
+        widths: '300, 500, 800',
+        sizes: '22vw'
     }}
   {%- endif -%}
 </div>

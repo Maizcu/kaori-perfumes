@@ -6,10 +6,7 @@
       {{
         section.settings.image
         | image_url: width: 1800
-        | image_tag:
-          loading: 'lazy',
-          widths: '600, 900, 1200, 1800',
-          sizes: '(min-width: 990px) 65vw, 100vw'
+        | image_tag: loading: 'lazy', widths: '600, 900, 1200, 1800', sizes: '(min-width: 990px) 65vw, 100vw'
       }}
     {%- endif -%}
   </div>
@@ -37,13 +34,21 @@
       <p class="ritual-promo__price">
         {{ section.settings.price }}
         {%- if section.settings.compare_price != blank %}
+          <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
           <s>{{ section.settings.compare_price | escape }}</s>
         {%- endif %}
       </p>
     {%- endif -%}
 
     {%- if section.settings.button_label != blank -%}
-      <a href="{{ section.settings.button_link }}" class="pill">
+      <a
+        {% if section.settings.button_link == blank %}
+          role="link" aria-disabled="true"
+        {% else %}
+          href="{{ section.settings.button_link }}"
+        {% endif %}
+        class="pill"
+      >
         {{- section.settings.button_label | escape -}}
         <span class="pill__icon" aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
       </a>
@@ -53,7 +58,7 @@
 
 {% schema %}
 {
-  "name": "Crea tu ritual",
+  "name": "Promo del ritual",
   "settings": [
     {
       "type": "image_picker",
@@ -124,7 +129,7 @@
   "max_blocks": 4,
   "presets": [
     {
-      "name": "Crea tu ritual",
+      "name": "Promo del ritual",
       "blocks": [
         {
           "type": "step",

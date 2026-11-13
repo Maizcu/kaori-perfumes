@@ -1,0 +1,104 @@
+{{ 'section-product-ritual.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'ritual.js' | asset_url }}" defer="defer"></script>
+
+{%- liquid
+  assign pairs = product.metafields.custom.combina_con.value
+  assign total = product.variants.first.price
+  for item in pairs
+    assign total = total | plus: item.variants.first.price
+  endfor
+  assign keep = 100 | minus: section.settings.discount
+  assign discounted = total | times: keep | divided_by: 100
+-%}
+
+{%- if pairs != blank -%}
+  <ritual-form class="product-ritual page-width">
+    <div class="product-ritual__box color-{{ section.settings.color_scheme }}">
+      <div class="product-ritual__intro">
+        <p class="eyebrow">{{ section.settings.label | escape }}</p>
+        <h2 class="product-ritual__title">
+          {{ product.title | escape }}
+          <em>{{ section.settings.title_suffix | escape }}</em>
+        </h2>
+        <p>{{ section.settings.text | escape }}</p>
+      </div>
+
+      <form action="{{ routes.cart_add_url }}" method="post" class="product-ritual__items">
+        {%- render 'product-ritual-item', product: product -%}
+        {%- for item in pairs -%}
+          <span class="product-ritual__plus" aria-hidden="true">+</span>
+          {%- render 'product-ritual-item', product: item -%}
+        {%- endfor -%}
+
+        <div class="product-ritual__buy">
+          <p class="product-ritual__price">
+            {{ discounted | money_without_trailing_zeros }}
+            <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+            <s>{{ total | money_without_trailing_zeros }}</s>
+          </p>
+          <button type="submit" class="pill">
+            {{- section.settings.button_label | escape -}}
+            <span class="pill__icon" aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+          </button>
+          <p class="product-ritual__message" aria-live="polite" data-message></p>
+        </div>
+      </form>
+    </div>
+  </ritual-form>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Combina con",
+  "enabled_on": {
+    "templates": ["product"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de color",
+      "default": "scheme-4"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Antetítulo",
+      "default": "Completa tu ritual"
+    },
+    {
+      "type": "text",
+      "id": "title_suffix",
+      "label": "Texto tras el nombre",
+      "default": "combina con…"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Texto",
+      "default": "Llévate los tres juntos y ahorra un 15 %."
+    },
+    {
+      "type": "range",
+      "id": "discount",
+      "label": "Descuento",
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "%",
+      "default": 15
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Botón",
+      "default": "Añadir el ritual"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Combina con"
+    }
+  ]
+}
+{% endschema %}

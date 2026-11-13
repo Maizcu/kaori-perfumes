@@ -1,0 +1,23 @@
+{%- liquid
+  assign variant = card_product.selected_or_first_available_variant
+
+  if card_product.available == false
+    assign label = 'products.product.sold_out' | t
+    assign scheme = settings.sold_out_badge_color_scheme
+  elsif card_product.compare_at_price > card_product.price
+    assign label = 'products.product.on_sale' | t
+    assign scheme = settings.sale_badge_color_scheme
+  elsif card_product.tags contains 'nuevo'
+    assign label = 'products.product.new' | t
+    assign scheme = settings.sale_badge_color_scheme
+  elsif variant.inventory_management == 'shopify' and variant.inventory_quantity <= 5
+    assign label = 'products.product.inventory_low_stock' | t
+    assign scheme = settings.sold_out_badge_color_scheme
+  endif
+-%}
+
+{%- if label -%}
+  <span id="{{ prefix }}-{{ section_id }}-{{ card_product.id }}" class="badge badge--bottom-left color-{{ scheme }}">
+    {{- label -}}
+  </span>
+{%- endif -%}

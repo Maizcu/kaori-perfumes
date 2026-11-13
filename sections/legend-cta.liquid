@@ -1,0 +1,88 @@
+{{ 'section-legend-cta.css' | asset_url | stylesheet_tag }}
+
+<div class="cta">
+  <div class="cta__box color-{{ section.settings.color_scheme }}">
+    <h2 class="cta__title">{{ section.settings.title }}</h2>
+
+    {%- if section.settings.text != blank -%}
+      <p class="cta__text">{{ section.settings.text | escape }}</p>
+    {%- endif -%}
+
+    <div class="cta__buttons">
+      {%- if section.settings.button_label != blank -%}
+        <a
+          {% if section.settings.button_link == blank %}
+            role="link" aria-disabled="true"
+          {% else %}
+            href="{{ section.settings.button_link }}"
+          {% endif %}
+          class="pill"
+        >
+          {{- section.settings.button_label | escape -}}
+          <span class="pill__icon" aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+        </a>
+      {%- endif -%}
+
+      {%- if section.settings.button_label_2 != blank -%}
+        <a href="{{ section.settings.button_link_2 | default: routes.root_url }}" class="pill pill--ghost">
+          {{- section.settings.button_label_2 | escape -}}
+          <span class="pill__icon" aria-hidden="true">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Llamada final",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Esquema de color",
+      "default": "scheme-4"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Título",
+      "default": "Encuentra <em>tu aroma</em>"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Texto",
+      "default": "Cinco perfumes, tres velas y un ritual para combinarlos."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Botón 1",
+      "default": "Descubrir perfumes"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Enlace del botón 1"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Botón 2",
+      "default": "Volver al inicio"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Enlace del botón 2",
+      "info": "Vacío: lleva a la página de inicio"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Llamada final"
+    }
+  ]
+}
+{% endschema %}

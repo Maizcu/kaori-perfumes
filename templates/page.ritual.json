@@ -1,0 +1,40 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "ritual-builder",
+      "settings": {
+        "label": "Pack a tu medida · 15 % de descuento",
+        "title": "Crea tu <em>ritual</em>",
+        "text": "Elige dos perfumes de 50 ml y una vela. El descuento se aplica solo en el carrito.",
+        "discount": 15,
+        "perfumes": "perfumes",
+        "perfumes_title": "<em>1.</em> Elige dos perfumes",
+        "perfumes_count": "de 2 elegidos",
+        "candles": "velas",
+        "candles_title": "<em>2.</em> Añade una vela",
+        "candles_count": "de 1 elegida",
+        "summary_scheme": "",
+        "summary_title": "Tu <em>ritual</em>",
+        "perfume_placeholder": "Elige un perfume",
+        "candle_placeholder": "Elige una vela",
+        "discount_label": "Descuento ritual",
+        "button_incomplete": "Completa tu ritual",
+        "button_label": "Añadir el ritual al carrito",
+        "incomplete_text": "Elige dos perfumes y una vela para activar el descuento.",
+        "ready_text": "Todo listo: el descuento se aplica al añadir el ritual."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

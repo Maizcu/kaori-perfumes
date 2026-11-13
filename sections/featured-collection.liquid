@@ -79,7 +79,14 @@
         </h2>
       {%- endif -%}
       {%- if section.settings.link_label != blank -%}
-        <a href="{{ section.settings.collection.url }}" class="text-link">
+        <a
+          {% if section.settings.collection.url == blank %}
+            role="link" aria-disabled="true"
+          {% else %}
+            href="{{ section.settings.collection.url }}"
+          {% endif %}
+          class="text-link"
+        >
           {{- section.settings.link_label | escape -}}
           {{ 'icon-arrow.svg' | inline_asset_content }}
         </a>
