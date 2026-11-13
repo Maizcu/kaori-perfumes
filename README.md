@@ -3,7 +3,7 @@
 Tienda de perfumes y velas de inspiración japonesa, desarrollada para la prueba técnica de Shopify Developer.
 
 - **Tienda:** https://kaori-perfumes-xuau8ztt.myshopify.com (la contraseña va en el correo de entrega)
-- **App del descuento:** [kaori-ritual](URL_DEL_REPO_DE_LA_APP), con la Shopify Function que aplica el descuento del ritual
+- **App del descuento:** [kaori-ritual](https://github.com/Maizcu/kaori-app.git), con la Shopify Function que aplica el descuento del ritual
 - **Diseño:** presentación adjunta en la entrega
 
 ## Punto de partida
